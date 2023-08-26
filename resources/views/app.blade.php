@@ -13,6 +13,7 @@
     <ul>
         <li><a href="/products">List Of Products</a></li>
         <li><a href="/edit-products">Edit Products</a></li>
+        <li><a href="/payment-log">PaymentLog</a></li>
     </ul>
     <br>
     <br>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -40,4 +41,14 @@ class PagesController extends Controller
         $products = Product::all();
         return view('edit-products', compact('products'));
     }
+
+    /**
+     * Return payment log page.
+     */
+    public function paymentLog()
+    {
+        $orders = Order::all();
+        return view('payment-log', compact('orders'));
+    }
+
 }

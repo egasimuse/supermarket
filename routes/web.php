@@ -20,6 +20,7 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/products', [PagesController::class, 'products']);
 Route::get('/receipt', [PagesController::class, 'receipt']);
 Route::get('/edit-products', [PagesController::class, 'editProducts']);
+Route::get('/payment-log', [PagesController::class, 'paymentLog']);
 Route::post('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/add', [ProductsController::class, 'add']);
 Route::post('/update', [ProductsController::class, 'update']);
