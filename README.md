@@ -8,13 +8,14 @@ Simple supermarket app which offers on the user to buy products, add, update or 
 ## Getting Started
 
 ```bash
-git clone
-cd supermarket-app
+git clone https://github.com/egasimuse/supermarket.git
+cd supermarket
+git checkout master
 composer install
 ./vendor/bin/sail up
 ```
 Set up database.
-1. Make sure that these variables are set in .env file
+1. Make sure that these variables are set in `.env` file and if you don't have .env file please copy `.env.example` file and create new `.env`
 ```angular2html
 DB_CONNECTION=mysql
 DB_HOST=mysql
