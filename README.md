@@ -26,6 +26,7 @@ DB_PASSWORD=password
 ```
 it will be good to restart the sail container.
 `./vendor/bin/sail restart`
+
 2. Migrate all the tables into the database.
 ```angular2html
 ./vendor/bin/sail artisan migrate
