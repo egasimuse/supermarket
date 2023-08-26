@@ -2,6 +2,9 @@
 
 Simple supermarket app which offers on the user to buy products, add, update or delete.Also payment log page where the user can track all the purchased orders.
 
+1. Framework - Laravel
+2. Sail - Sail provides a Docker powered local development experience for Laravel that is compatible with macOS, Windows (WSL2), and Linux
+
 ## Getting Started
 
 ```bash
