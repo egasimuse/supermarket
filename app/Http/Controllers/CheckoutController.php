@@ -22,6 +22,9 @@ class CheckoutController extends Controller
             $productsByType[strtoupper($product)][] = $product;
         }
         $finalProducts = $this->calculateProductPrice($productsByType);
+        if (!isset($finalProducts['products'])) {
+            return redirect()->back()->withErrors(['No such product found!']);
+        }
         $this->store($finalProducts);
         return view('receipt', compact('finalProducts'));
     }

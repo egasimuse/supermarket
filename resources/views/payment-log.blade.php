@@ -10,13 +10,15 @@
             <th>Total Price</th>
             <th>Order Time</th>
         </tr>
-        @foreach($orders as $order)
+        @forelse($orders as $order)
         <tr>
             <th>{{ $order->name }}</th>
             <th>{{ $order->quantity }}</th>
             <th>{{ $order->total_price }}</th>
             <th>{{ $order->created_at }}</th>
         </tr>
-        @endforeach
+        @empty
+            <p>No Orders found.</p>
+        @endforelse
     </table>
 @endsection

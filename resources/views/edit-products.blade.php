@@ -3,6 +3,15 @@
 @section('title', 'Edit products')
 
 @section('content')
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li style="color: red">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h3>Add New Products</h3>
     <table>
         <tr>
@@ -35,15 +44,6 @@
     </table>
     <h3>Edit or Delete Products</h3>
     <table>
-        @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li style="color: red">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <tr>
             <th>Product Name</th>
             <th>Unit Price</th>
@@ -52,35 +52,37 @@
             <th>Update</th>
             <th>Delete</th>
         </tr>
-        @foreach($products as $product)
-                    <tr>
-                        <form action="/update" method="post">
-                            <th>
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input name="name" type="text" value="{{ $product->name }}">
-                            </th>
-                            <th>
-                                <input name="unit_price" type="number" min="1" value="{{ $product->unit_price }}">
-                            </th>
-                            <th>
-                                <input name="special_unit" type="number" min="1" value="{{ $product->special_unit }}">
-                            </th>
-                            <th>
-                                <input name="special_price" type="number" min="1" value="{{ $product->special_price }}">
-                            </th>
-                            <th>
-                                <button type="submit">Update</button>
-                            </th>
-                            @csrf
-                        </form>
-                        <form action="/delete" method="post">
-                            <th>
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <button>Delete</button>
-                            </th>
-                            @csrf
-                        </form>
-                    </tr>
-        @endforeach
+        @forelse($products as $product)
+            <tr>
+                <form action="/update" method="post">
+                    <th>
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input name="name" type="text" value="{{ $product->name }}">
+                    </th>
+                    <th>
+                        <input name="unit_price" type="number" min="1" value="{{ $product->unit_price }}">
+                    </th>
+                    <th>
+                        <input name="special_unit" type="number" min="1" value="{{ $product->special_unit }}">
+                    </th>
+                    <th>
+                        <input name="special_price" type="number" min="1" value="{{ $product->special_price }}">
+                    </th>
+                    <th>
+                        <button type="submit">Update</button>
+                    </th>
+                    @csrf
+                </form>
+                <form action="/delete" method="post">
+                    <th>
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button>Delete</button>
+                    </th>
+                    @csrf
+                </form>
+            </tr>
+        @empty
+            <p>No products found.</p>
+        @endforelse
     </table>
 @endsection

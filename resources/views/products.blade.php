@@ -10,7 +10,7 @@
                 <th>Price</th>
                 <th>Special Offer</th>
             </tr>
-            @foreach($products as $product)
+            @forelse($products as $product)
                 <tr>
                     <th>{{ $product->name }}</th>
                     <th>{{ $product->unit_price }}</th>
@@ -20,7 +20,9 @@
                         <th>Not found any special offer</th>
                     @endif
                 </tr>
-            @endforeach
+            @empty
+                <p>No products found!</p>
+            @endforelse
         </table>
         <br>
         <br>

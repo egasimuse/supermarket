@@ -23,13 +23,17 @@ class ProductsController extends Controller
         ]);
         $productModel = new Product();
         $productName = strtoupper($request->name);
-        $productModel->name = $productName;
-        $productModel->unit_price = $request->unit_price;
-        $productModel->special_unit = $request->special_unit ?? NULL;
-        $productModel->special_price = $request->special_price ?? NULL;
+        $productCheck = $productModel::where('name', $productName)->first();
+        if (empty($productCheck->id)) {
+            $productModel->name = $productName;
+            $productModel->unit_price = $request->unit_price;
+            $productModel->special_unit = $request->special_unit ?? NULL;
+            $productModel->special_price = $request->special_price ?? NULL;
 
-        $productModel->save();
-        return redirect()->back();
+            $productModel->save();
+            return redirect()->back();
+        }
+        return redirect()->back()->withErrors(['Product with this name already exist, please enter unique name.']);
     }
 
     /**
